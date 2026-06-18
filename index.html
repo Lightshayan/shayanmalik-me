@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Static Starter</title>
+  <meta name="description" content="A plain HTML/CSS site, ready to deploy on Vercel with zero config." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <span class="nav__dot" aria-hidden="true"></span>
+    <span class="nav__label">static / ready</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero__eyebrow">No build step. No framework. Just files.</p>
+      <h1 class="hero__title">Push it.<br /><span>It's already live-ready.</span></h1>
+      <p class="hero__sub">This page is plain HTML and CSS — no React, no bundler, nothing to install. Replace this copy and ship the rest.</p>
+    </section>
+
+    <section class="deploy">
+      <div class="terminal" role="img" aria-label="Terminal showing git push, Vercel auto-detecting the static site, and a successful deploy">
+        <div class="terminal__bar">
+          <span></span><span></span><span></span>
+        </div>
+        <pre class="terminal__body"><code>$ git push origin main
+&gt; Vercel detected: Other (static)
+&gt; Build command: none
+&gt; Output directory: .
+<span class="ok">&check; Deployed</span><span class="cursor" aria-hidden="true">&nbsp;</span></code></pre>
+      </div>
+
+      <ol class="steps">
+        <li><span class="steps__num">1</span><span>Push this repo to GitHub.</span></li>
+        <li><span class="steps__num">2</span><span>Import it in Vercel — no settings to touch.</span></li>
+        <li><span class="steps__num">3</span><span>Edit <code>index.html</code> and <code>styles.css</code>, push again.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Edit this footer in <code>index.html</code>.</p>
+  </footer>
+</body>
+</html>
