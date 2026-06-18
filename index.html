@@ -1,50 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Static Starter</title>
-  <meta name="description" content="A plain HTML/CSS site, ready to deploy on Vercel with zero config." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shayan Malik — Researcher, Founder, Builder</title>
+<meta name="description" content="Shayan Malik — researcher, nonprofit founder, and builder. Founder of Syntra & Verity. Princeton, NJ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF7F2; --ink:#1A1A17; --soft:#5C594F; --teal:#1F6F5C; --clay:#C1502E; --line:#E1DCCF; --card:#F3EFE6;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Fraunces',serif; font-weight:600; letter-spacing:-0.01em;}
+a{color:inherit; text-decoration:none;}
+.mono{font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--soft);}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+.line{height:1px; background:var(--line); border:none;}
+
+/* header */
+header{position:sticky; top:0; z-index:50; background:rgba(250,247,242,.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+header .bar{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:760px; margin:0 auto;}
+.logo{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:600;}
+.logo .mark{width:30px; height:30px; border-radius:50%; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:.7rem;}
+nav.desk{display:flex; gap:18px;}
+nav.desk a{font-family:'IBM Plex Mono',monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; color:var(--soft); white-space:nowrap;}
+nav.desk a:hover{color:var(--teal);}
+.menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:8px; padding:8px 12px; font-family:'IBM Plex Mono',monospace; font-size:.75rem; cursor:pointer; color:var(--ink);}
+.mnav{display:none; flex-direction:column; gap:2px; border-bottom:1px solid var(--line); background:var(--paper);}
+.mnav.open{display:flex;}
+.mnav a{padding:14px 24px; border-top:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:.78rem; text-transform:uppercase; color:var(--soft);}
+
+/* hero */
+.hero{padding:72px 0 56px;}
+.tag{display:inline-flex; align-items:center; gap:8px; margin-bottom:22px;}
+.dot{width:6px; height:6px; border-radius:50%; background:var(--teal);}
+.hero h1{font-size:clamp(2.4rem,7vw,3.6rem); line-height:1.05; margin-bottom:10px;}
+.role{font-family:'IBM Plex Mono',monospace; color:var(--teal); font-size:.95rem; margin-bottom:22px;}
+.hero p{max-width:540px; color:var(--soft); font-size:1.05rem; margin-bottom:30px;}
+.hero p em, p em, h2 em{font-style:italic; color:var(--ink);}
+.cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
+.btn{padding:13px 22px; border-radius:999px; font-size:.88rem; font-weight:500;}
+.btn.solid{background:var(--ink); color:var(--paper);}
+.btn.outline{border:1px solid var(--line);}
+.btn:hover{opacity:.82;}
+.pulse-wrap{height:46px; overflow:hidden;}
+.pulse-wrap svg{width:100%; height:100%; display:block;}
+.pulse-path{stroke:var(--teal); stroke-width:2; fill:none; stroke-dasharray:600; stroke-dashoffset:600; animation:draw 2.2s ease-out forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+
+/* sections */
+section{padding:54px 0;}
+section + section{border-top:1px solid var(--line);}
+.eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+.eyebrow .mono{color:var(--teal);}
+h2{font-size:clamp(1.7rem,4vw,2.2rem); margin-bottom:20px;}
+.lead{color:var(--soft); max-width:600px; margin-bottom:18px;}
+
+/* stats */
+.stats{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:28px;}
+.stat b{display:block; font-family:'Fraunces',serif; font-size:1.5rem; color:var(--teal);}
+.stat span{font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:var(--soft); text-transform:uppercase;}
+
+/* cards */
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px; margin-bottom:16px;}
+.card-head{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:baseline; margin-bottom:6px;}
+.card h3{font-size:1.25rem;}
+.card .meta{font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--soft); text-transform:uppercase;}
+.card p{color:var(--soft); font-size:.95rem; margin:8px 0 12px;}
+.tags{display:flex; gap:8px; flex-wrap:wrap;}
+.tags span{font-family:'IBM Plex Mono',monospace; font-size:.68rem; padding:5px 10px; border:1px solid var(--line); border-radius:999px; color:var(--soft); text-transform:uppercase;}
+.card .lnk{display:inline-block; margin-top:10px; font-size:.85rem; color:var(--teal); font-weight:500; border-bottom:1px solid var(--teal);}
+
+/* awards */
+.awards{display:grid; gap:0;}
+.award{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line); align-items:baseline;}
+.award:last-child{border-bottom:none;}
+.award .num{font-family:'IBM Plex Mono',monospace; color:var(--teal); font-size:.8rem; min-width:28px;}
+.award b{font-weight:500;}
+.award small{display:block; color:var(--soft); font-size:.82rem;}
+
+/* contact */
+.contact-row{display:flex; gap:14px; flex-wrap:wrap; margin:26px 0;}
+.detail{display:flex; justify-content:space-between; padding:14px 0; border-top:1px solid var(--line); font-size:.92rem;}
+.detail span:first-child{font-family:'IBM Plex Mono',monospace; font-size:.7rem; text-transform:uppercase; color:var(--soft);}
+
+footer{padding:32px 0 56px; display:flex; flex-wrap:wrap; gap:14px; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--soft); text-transform:uppercase;}
+footer .flinks{display:flex; gap:18px;}
+footer a:hover{color:var(--teal);}
+
+@media (max-width:640px){
+  nav.desk{display:none;}
+  .menu-btn{display:inline-block;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .cta-row .btn{flex:1; text-align:center;}
+}
+</style>
 </head>
 <body>
-  <header class="nav">
-    <span class="nav__dot" aria-hidden="true"></span>
-    <span class="nav__label">static / ready</span>
-  </header>
 
-  <main>
-    <section class="hero">
-      <p class="hero__eyebrow">No build step. No framework. Just files.</p>
-      <h1 class="hero__title">Push it.<br /><span>It's already live-ready.</span></h1>
-      <p class="hero__sub">This page is plain HTML and CSS — no React, no bundler, nothing to install. Replace this copy and ship the rest.</p>
-    </section>
+<header>
+  <div class="bar">
+    <a class="logo" href="#index"><span class="mark">SM</span>Shayan Malik</a>
+    <nav class="desk">
+      <a href="#about">01 About</a>
+      <a href="#education">02 Education</a>
+      <a href="#experience">03 Experience</a>
+      <a href="#projects">04 Projects</a>
+      <a href="#awards">05 Awards</a>
+      <a href="#papers">06 Papers</a>
+      <a href="#contact">07 Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">Menu</button>
+  </div>
+  <nav class="mnav" id="mnav">
+    <a href="#about">01 — About</a>
+    <a href="#education">02 — Education</a>
+    <a href="#experience">03 — Experience</a>
+    <a href="#projects">04 — Projects</a>
+    <a href="#awards">05 — Awards</a>
+    <a href="#papers">06 — Papers</a>
+    <a href="#contact">07 — Contact</a>
+  </nav>
+</header>
 
-    <section class="deploy">
-      <div class="terminal" role="img" aria-label="Terminal showing git push, Vercel auto-detecting the static site, and a successful deploy">
-        <div class="terminal__bar">
-          <span></span><span></span><span></span>
-        </div>
-        <pre class="terminal__body"><code>$ git push origin main
-&gt; Vercel detected: Other (static)
-&gt; Build command: none
-&gt; Output directory: .
-<span class="ok">&check; Deployed</span><span class="cursor" aria-hidden="true">&nbsp;</span></code></pre>
+<div class="wrap" id="index">
+  <section class="hero">
+    <div class="tag"><span class="dot"></span><span class="mono">Princeton, New Jersey</span></div>
+    <h1>Shayan Malik</h1>
+    <div class="role">Researcher · Founder · Builder</div>
+    <p>A high school junior leading <em>Syntra</em> and <em>Verity</em> — two organizations working at the intersection of health and technology.</p>
+    <div class="cta-row">
+      <a class="btn solid" href="#projects">View work</a>
+      <a class="btn outline" href="mailto:shayan@shayanmalik.me">Get in touch</a>
+    </div>
+    <div class="pulse-wrap"><svg viewBox="0 0 600 46" preserveAspectRatio="none"><path class="pulse-path" d="M0,23 L120,23 L140,5 L160,40 L180,10 L200,23 L300,23 L320,23 L340,8 L360,38 L380,23 L600,23"/></svg></div>
+  </section>
+
+  <section id="about">
+    <div class="eyebrow"><span class="mono">01 — About</span></div>
+    <h2>Biography.</h2>
+    <p class="lead">Shayan is a junior at Noor Ul Iman School in Princeton, NJ, enrolled in the highest-level courses offered — while concurrently earning college credit through dual enrollment at Middlesex College.</p>
+    <p class="lead">He is the founder and executive director of <em>Syntra</em>, a community health nonprofit delivering pop-up clinics and programs to underserved areas, and the founder of <em>Verity</em>, an AI-powered emergency companion application currently in alpha development.</p>
+    <p class="lead">His research spans neuroscience, genomics, and biotechnology. He has been recognized with the Gold Presidential Volunteer Service Award and multiple academic honors.</p>
+    <div class="stats">
+      <div class="stat"><b>II</b><span>Orgs founded</span></div>
+      <div class="stat"><b>2,000+</b><span>People served</span></div>
+      <div class="stat"><b>Princeton</b><span>Hometown</span></div>
+      <div class="stat"><b>Junior</b><span>Currently</span></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="eyebrow"><span class="mono">02 — Education</span></div>
+    <h2>Education.</h2>
+    <div class="card">
+      <div class="card-head"><h3>Noor Ul Iman School</h3><span class="meta">Junior · Expected 2026</span></div>
+      <span class="meta">High School</span>
+      <p>Enrolled in the highest-level courses available. 1st place in Science Fair, sole recipient of the Excellence in Science Award, and recipient of the Excellence in Community Service Award.</p>
+      <div class="tags"><span>Science Fair — 1st</span><span>Excellence in Science</span><span>Community Service</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Middlesex College</h3><span class="meta">Concurrent</span></div>
+      <span class="meta">Dual Enrollment</span>
+      <p>Taking college-accredited courses alongside high school, earning transferable college credit.</p>
+      <div class="tags"><span>College Credit</span><span>Dual Enrollment</span></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="eyebrow"><span class="mono">03 — Experience</span></div>
+    <h2>Experience.</h2>
+    <div class="card">
+      <div class="card-head"><h3>Syntra</h3><span class="meta">Founder & Executive Director · 2024 — Present</span></div>
+      <p>Community health nonprofit addressing healthcare deserts through pop-up clinics and direct community programs. Built from zero — operations, volunteers, and program design.</p>
+      <div class="tags"><span>Nonprofit</span><span>Healthcare</span><span>Operations</span></div>
+      <a class="lnk" href="https://joinsyntra.org/" target="_blank" rel="noopener">joinsyntra.org →</a>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Verity</h3><span class="meta">Founder · 2025 — Present</span></div>
+      <p>AI emergency companion app empowering bystanders in crisis with real-time guidance. Currently in alpha — built to close the gap between calling for help and meaningful first response.</p>
+      <div class="tags"><span>AI</span><span>Mobile</span><span>Health Tech</span><span>Alpha</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Research</h3><span class="meta">Researcher · 2024 — Present</span></div>
+      <p>Research across neuroscience, genomics, and emerging biotechnology. Science Fair winner, published researcher in progress.</p>
+      <div class="tags"><span>Neuroscience</span><span>Genomics</span><span>Biotech</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>MCGP</h3><span class="meta">Community Volunteer · Ongoing</span></div>
+      <p>Crowd management, security, and logistics for large-scale community events serving 2,000+ attendees.</p>
+      <div class="tags"><span>Leadership</span><span>Logistics</span></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="eyebrow"><span class="mono">04 — Projects</span></div>
+    <h2>Selected projects.</h2>
+    <div class="card">
+      <div class="card-head"><h3>Verity</h3><span class="meta">Active · Alpha</span></div>
+      <span class="meta">Health Tech · AI</span>
+      <p>AI emergency companion app empowering bystanders to act in crisis. Built to put meaningful first-response guidance in anyone's hands.</p>
+      <div class="tags"><span>AI/ML</span><span>Mobile</span><span>Health</span></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>WebMD Diagnostic Chatbot</h3><span class="meta">1st — MakeSPP</span></div>
+      <span class="meta">AI · Hackathon</span>
+      <p>AI diagnostic chatbot with persistent memory guiding users through symptom assessment. 1st place in the healthcare track at MakeSPP.</p>
+      <div class="tags"><span>LLM</span><span>Full-Stack</span><span>Healthcare</span></div>
+      <a class="lnk" href="https://github.com/Lightshayan/Web-Doc" target="_blank" rel="noopener">Web-Doc on GitHub →</a>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Full Scale Drivable EV</h3><span class="meta">In Progress</span></div>
+      <span class="meta">Hardware · Engineering</span>
+      <p>Designing and manufacturing a full-scale drivable electric vehicle from scratch. Every component spec'd, sourced, and assembled by hand.</p>
+      <div class="tags"><span>Hardware</span><span>Electrical</span><span>Mechanical</span></div>
+      <a class="lnk" href="https://github.com/Lightshayan/Electricvehicle" target="_blank" rel="noopener">Electricvehicle on GitHub →</a>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="eyebrow"><span class="mono">05 — Awards</span></div>
+    <h2>Recognition.</h2>
+    <div class="awards">
+      <div class="award"><span class="num">01</span><div><b>Gold Presidential Volunteer Service Award</b><small>United States</small></div></div>
+      <div class="award"><span class="num">02</span><div><b>Best Delegate</b><small>Model UN</small></div></div>
+      <div class="award"><span class="num">03</span><div><b>1st Place — Healthcare Track</b><small>MakeSPP</small></div></div>
+      <div class="award"><span class="num">04</span><div><b>Excellence in Science Award</b><small>Sole recipient</small></div></div>
+      <div class="award"><span class="num">05</span><div><b>1st Place — Science Fair</b></div></div>
+      <div class="award"><span class="num">06</span><div><b>Volunteer of the Year</b></div></div>
+      <div class="award"><span class="num">07</span><div><b>1st Place — Essay Competition</b></div></div>
+      <div class="award"><span class="num">08</span><div><b>2nd Place — International Hackathon</b></div></div>
+      <div class="award"><span class="num">09</span><div><b>Honorable Mention</b><small>International Model UN Conference</small></div></div>
+    </div>
+  </section>
+
+  <section id="papers">
+    <div class="eyebrow"><span class="mono">06 — Papers</span></div>
+    <h2>Research.</h2>
+    <div class="card">
+      <div class="card-head"><h3>Research paper <em>coming soon.</em></h3><span class="meta">Forthcoming</span></div>
+      <span class="meta">Shayan Malik · 2025</span>
+      <div class="tags" style="margin-top:14px">
+        <a class="lnk" href="https://orcid.org/0009-0000-5330-8138" target="_blank" rel="noopener">ORCID 0009-0000-5330-8138 →</a>
       </div>
+      <div class="tags" style="margin-top:8px">
+        <a class="lnk" href="https://scholar.google.com/citations?hl=en&user=9rJpBDcAAAAJ" target="_blank" rel="noopener">Google Scholar →</a>
+      </div>
+    </div>
+  </section>
 
-      <ol class="steps">
-        <li><span class="steps__num">1</span><span>Push this repo to GitHub.</span></li>
-        <li><span class="steps__num">2</span><span>Import it in Vercel — no settings to touch.</span></li>
-        <li><span class="steps__num">3</span><span>Edit <code>index.html</code> and <code>styles.css</code>, push again.</span></li>
-      </ol>
-    </section>
-  </main>
+  <section id="contact">
+    <div class="eyebrow"><span class="mono">07 — Contact</span></div>
+    <h2>Let's <em>correspond.</em></h2>
+    <p class="lead">Open to research collaborations, speaking opportunities, and conversations at the intersection of health and technology.</p>
+    <div class="contact-row">
+      <a class="btn solid" href="mailto:shayan@shayanmalik.me">Email</a>
+      <a class="btn outline" href="https://linkedin.com/in/shayanmalik1" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn outline" href="https://github.com/Lightshayan" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="detail"><span>Email</span><span>shayan@shayanmalik.me</span></div>
+    <div class="detail"><span>LinkedIn</span><span>linkedin.com/in/shayanmalik1</span></div>
+  </section>
+</div>
 
-  <footer class="footer">
-    <p>Edit this footer in <code>index.html</code>.</p>
-  </footer>
+<footer class="wrap">
+  <span>Shayan Malik © 2026 — All rights reserved</span>
+  <div class="flinks">
+    <a href="https://github.com/Lightshayan" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/shayanmalik1" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:shayan@shayanmalik.me">Email</a>
+  </div>
+</footer>
+
+<script>
+const btn=document.getElementById('menuBtn'), mnav=document.getElementById('mnav');
+btn.addEventListener('click',()=>mnav.classList.toggle('open'));
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mnav.classList.remove('open')));
+</script>
 </body>
-</html>
