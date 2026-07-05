@@ -1,10 +1,8 @@
-# Static starter
+## Shayanmalik.me
 
-Plain HTML + CSS, no build step.
+I made this project as I needed a portfolio website, where people can learn about me, and where I can create a centralized hub for my work. 
 
-## Deploy
-1. Push this folder to a GitHub repo.
-2. Import the repo in Vercel.
-3. Leave all settings as default (Framework: "Other", no build command, output directory `.`) — click Deploy.
+There are 2 projects associated with this domain:
 
-Edit `index.html` and `styles.css`, push again, done.
+- Shayanmalik.me - The main, public-facing domain
+- placeholder.shayanmalik.me - Personal storage, dashboard, etc.
