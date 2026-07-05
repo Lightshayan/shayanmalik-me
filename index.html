@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shayan Malik</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">/home</a></li>
+                    <li><a href="projects.html">/projects</a></li>
+                    <li><a href="research.html">/research</a></li>
+                    <li><a href="https://shayanm4lik.substack.com/" target="_blank">/writing</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main class="home-container">
+            <div class="Hero-Home">
+                <h1 id="bigName">Shayan Malik</h1>
+            </div>
+           <div id="About">
+    <p>
+        I'm a
+        <span class="hover-word" data-card="student">student</span>,
+        <span class="hover-word" data-card="researcher">researcher</span>,
+        <span class="hover-word" data-card="founder">founder</span>, and
+        <span class="hover-word" data-card="builder">builder</span>
+        making healthcare simpler, smarter, and more accessible.
+    </p>
+
+    <div id="hoverCard">
+
+        <div class="card" id="student">
+            <h3>Student</h3>
+            <p>
+                High School Junior at Noor ul Iman School.
+            </p>
+        </div>
+
+        <div class="card" id="researcher">
+            <h3>Researcher</h3>
+            <p>
+               Exploring AI/ML, healthcare, biology, and neuroscience.
+            </p>
+        </div>
+
+        <div class="card" id="founder">
+            <h3>Founder</h3>
+            <p>
+                Building Syntra to make healthcare more accessible.
+            </p>
+        </div>
+
+        <div class="card" id="builder">
+            <h3>Builder</h3>
+            <p>
+                Building Verity to empower bystanders.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<div id="Links">
+    <a href="https://www.linkedin.com/in/shayanm4lik/" target="_blank">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://www.x.com/shayanm4lik" target="_blank">
+        <img src="x-icon.png" alt="X">
+    </a>
+
+    <a href="https://www.github.com/shayanm4lik" target="_blank">
+        <img src="github-icon.png" alt="GitHub">
+    </a>
+
+    <a href="mailto:Shayan@shayanmalik.me">
+        <img src="mail-icon.png" alt="Email">
+    </a>
+</div>
+
+        </main>
+    <script>
+    const words = document.querySelectorAll(".hover-word");
+    const cards = document.querySelectorAll(".card");
+    const hoverCard = document.getElementById("hoverCard");
+
+    // Opens the selected card
+    function openCard(cardId) {
+        hoverCard.classList.add("visible");
+
+        cards.forEach(card => card.classList.remove("active"));
+
+        document
+            .getElementById(cardId)
+            .classList.add("active");
+    }
+
+    // Closes everything
+    function closeCard() {
+        hoverCard.classList.remove("visible");
+
+        cards.forEach(card => card.classList.remove("active"));
+    }
+
+    // Click a keyword
+    words.forEach(word => {
+
+        word.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            const selected = document.getElementById(word.dataset.card);
+
+            // If already open, close it
+            if (
+                hoverCard.classList.contains("visible") &&
+                selected.classList.contains("active")
+            ) {
+                closeCard();
+                return;
+            }
+
+            openCard(word.dataset.card);
+
+        });
+
+    });
+
+    // Prevent closing when clicking inside the card
+    hoverCard.addEventListener("click", (e) => {
+        e.stopPropagation();
+    });
+
+    // Click anywhere else
+    document.addEventListener("click", () => {
+        closeCard();
+    });
+    </script>
+</body>
+</html>

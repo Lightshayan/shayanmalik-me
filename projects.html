@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shayan's Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">/home</a></li>
+                    <li><a href="projects.html" class="active">/projects</a></li>
+                    <li><a href="research.html">/research</a></li>
+                    <li><a href="https://shayanm4lik.substack.com/" target="_blank">/writing</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    <main class="content-container">
+        <h1 class="Hero">Projects</h1>
+        
+        <div class="project-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="Healthcare">Healthcare</button>
+            <button class="filter-btn" data-filter="Community">Community</button>
+            <button class="filter-btn" data-filter="App">App</button>
+            <button class="filter-btn" data-filter="Research">Research</button>
+            <button class="filter-btn" data-filter="AI/ML">AI/ML</button>
+            <button class="filter-btn" data-filter="Hardware">Hardware</button>
+            <button class="filter-btn" data-filter="Events">Events</button>
+        </div>
+
+        <ul class="projectList">
+            <li class="projectCard" data-category="Healthcare Community Events">
+                <a href="https://www.joinsyntra.org" class="projectItem" target="_blank" rel="noopener noreferrer">
+                    <div class="projectTitle">Syntra</div>
+                    <div class="projectDescription">Syntra runs free pop-up health screenings in underserved communities, aiming to minimize health deserts and make healthcare more accessible.</div>
+                </a>
+            </li>
+            <li class="projectCard" data-category="App AI/ML Healthcare">
+                <a href="https://www.linkedin.com/company/joinverity" class="projectItem" target="_blank" rel="noopener noreferrer">
+                    <div class="projectTitle">Verity</div>
+                    <div class="projectDescription">Empowering bystanders to take action in medical emergencies through an AI-powered simplistic application.</div>
+                </a>
+            </li>
+            <li class="projectCard" data-category="Research Healthcare">
+                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6968618" class="projectItem" target="_blank" rel="noopener noreferrer">
+                    <div class="projectTitle">CRISPR Research</div>
+                    <div class="projectDescription">Independent research publication on the off-target efficacy of CRISPR-Cas9 gene editing. Pre-print version available on SSRN.</div>
+                </a>
+            </li>
+            <li class="projectCard" data-category="Community AI/ML Events">
+                <a href="https://github.com/Code-the-Stars" class="projectItem" target="_blank" rel="noopener noreferrer">
+                    <div class="projectTitle">Code the Stars</div>
+                    <div class="projectDescription">Head of an organization empowering the next generation of STEM leaders through hackathons and workshops with thousands of participants.</div>
+                </a>
+            </li>
+             <li class="projectCard" data-category="AI/ML Events">
+                <a href="https://github.com/shayanm4lik/Web-Doc" class="projectItem" target="_blank" rel="noopener noreferrer">
+                    <div class="projectTitle">WebMD Diagnostic Chatbot</div>
+                    <div class="projectDescription">AI diagnostic chatbot with persistent memory guiding users through symptom assessment. 1st place in the healthcare track at MakeSPP.</div>
+                </a>
+            </li>
+             <li class="projectCard" data-category="Hardware">
+                <a href="https://github.com/shayanm4lik/Electricvehicle" class="projectItem" target="_blank" rel="noopener noreferrer">
+                    <div class="projectTitle">Vehicle Prototype Project</div>
+                    <div class="projectDescription">Designing and manufacturing a full-scale drivable electric vehicle from scratch. Every component spec'd, sourced, and assembled by hand.</div>
+                </a>
+            </li> 
+        </ul>
+    </main>
+
+<script>
+    function initializeProjectFilters() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.projectCard');
+
+        if (projectCards.length === 0) return;
+
+        function refreshGridLines() {
+    const visibleCards = Array.from(projectCards).filter(card => !card.classList.contains('hidden'));
+    const totalVisible = visibleCards.length;
+
+    visibleCards.forEach((card) => {
+        // Clear out any old line classes completely
+        card.classList.remove('vertical-line', 'horizontal-line');
+    });
+}
+
+        // Run once on load to establish baseline grid lines
+        refreshGridLines();
+
+        // Re-added the missing event listeners for your filter buttons!
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const dataCat = card.getAttribute('data-category');
+                    if (!dataCat) return;
+                    
+                    const cardCategories = dataCat.split(' ');
+                    
+                    if (filterValue === 'all' || cardCategories.includes(filterValue)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                // Recalculate grid lines after items change visibility
+                refreshGridLines();
+            });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initializeProjectFilters();
+    });
+</script>
+</body>
+</html>
