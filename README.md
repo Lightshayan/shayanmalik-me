@@ -9,8 +9,15 @@ I have 4 pages currently:
 - Research.tml aka /research. This shows my publications and current research focus.
 also theres /writing which leads you to my substack.
 
-- GRAVEYARD/HIDDEN:
-- 
+- GRAVEYARD (Deleted files and/or files that didnt make v1:
+- Alternate research page
+- a literal graveyard page for my failed projects
+
+- Concepts for future ideas:
+- Interactive business card (ideally paired with an NFC card)
+- graveyard page, see above
+- personal storage dash
+- idk if i have the skillset to do this but a auth app to simplify my sign ins (im broke, cant pay for it)
 
 There are 2 projects associated with this domain:
 
